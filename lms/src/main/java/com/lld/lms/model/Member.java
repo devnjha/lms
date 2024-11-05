@@ -1,5 +1,6 @@
 package com.lld.lms.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,5 +19,6 @@ public class Member {
     private String membershipDate;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference("memberReference")
     private List<BorrowingRecord> borrowingRecords; // Reference to borrowing records
 }

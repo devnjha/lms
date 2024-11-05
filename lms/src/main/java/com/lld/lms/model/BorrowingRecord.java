@@ -1,5 +1,6 @@
 package com.lld.lms.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,10 +16,12 @@ public class BorrowingRecord {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonBackReference("bookReference")
     private Book book; // Reference to the borrowed book
 
     @ManyToOne
     @JoinColumn(name = "member_id")
+    @JsonBackReference("memberReference")
     private Member member; // Reference to the member who borrowed the book
 
     private LocalDate borrowDate; // Date when the book was borrowed
