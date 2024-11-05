@@ -1,6 +1,8 @@
 package com.lld.lms.service;
 
+import com.lld.lms.model.Book;
 import com.lld.lms.model.BorrowingRecord;
+import com.lld.lms.model.Member;
 import com.lld.lms.repository.BorrowingRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,13 @@ public class BorrowingRecordService {
 
     public void delete(Long id) {
         borrowingRecordRepository.deleteById(id);
+    }
+
+    public List<BorrowingRecord> findByMemberId(Long memberId) {
+        return borrowingRecordRepository.findByMemberId(memberId);
+    }
+
+    public Optional<BorrowingRecord> findByBookAndMember(Book book, Member member) {
+        return borrowingRecordRepository.findByMemberIdAndBookId(member.getId(), book.getId());
     }
 }
