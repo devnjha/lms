@@ -29,4 +29,17 @@ public class BorrowingRecord {
     private LocalDate returnDate; // Date when the book was returned
     private double lateFee; // Fee for late return
 
+    @Override
+    public String toString()
+    {
+        String borrowingRecord = "";
+        borrowingRecord += "BookId: " + book.getId() + "\n";
+        borrowingRecord +="MemberID: " + member.getId() + "\n";
+        borrowingRecord += "Date: " + borrowDate + "\n";
+        borrowingRecord += "DueDate: " + dueDate + "\n";
+        borrowingRecord += "ReturnDate: " + returnDate + "\n";
+        borrowingRecord += "LateFee: " + lateFee + "\n";
+        return borrowingRecord;
+    }
+
 }

@@ -17,7 +17,7 @@ public class LibraryServiceController {
     private LibraryService libraryService;
 
     @PostMapping("/books/{bookId}/members/{memberId}/borrow")
-    public ResponseEntity<String> borrowBookById(@PathVariable Long bookId, @PathVariable Long memberId) {
+    public ResponseEntity<String> borrowBookById(@PathVariable Long bookId, @PathVariable Long memberId) throws InterruptedException {
         boolean result = libraryService.borrowBookById(bookId, memberId);
         if (result) {
             return ResponseEntity.ok("Book borrowed successfully");
